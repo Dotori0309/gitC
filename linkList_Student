@@ -77,4 +77,7 @@ int main(void)
         else if (n == 3)
             return 0;
     }
+free(head);
+free(tmp);
+free(tail);
 }
