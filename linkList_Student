@@ -1,0 +1,80 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct std
+{
+    int num;          // 학번
+    char name[33];    // 이름
+    struct std *next; // 자기 참조 구조체
+} std;
+
+std *Student(std **head, std **tail)
+{
+    std *new_node = (std *)malloc(sizeof(std));
+    new_node->next = NULL;
+    if (new_node == NULL)
+    {
+        printf("메모리 할당 실패\n");
+        exit(1);
+    }
+
+    printf("\n학번 입력: ");
+    scanf("%d", &(new_node->num));
+    printf("이름 입력: ");
+    scanf("%s", new_node->name);
+
+    if (*head == NULL)
+    {
+        *head = new_node;
+    }
+    else
+    {
+        (*tail)->next = new_node;
+    }
+    *tail = new_node;
+    printf("학생 정보 입력 완료\n\n");
+}
+
+void printStudent(std *head)
+{
+    std *tmp = NULL;
+    if (head == NULL)
+    {
+        printf("등록된 학생 정보가 없습니다.\n");
+        return;
+    }
+    tmp = head;
+    while (tmp != NULL)
+    {
+        printf("\n 학번: %d", tmp->num);
+        printf("\n 이름: %s", tmp->name);
+        tmp = tmp->next;
+    }
+    printf("\n학생 정보 출력 완료.\n\n");
+}
+int main(void)
+{
+    int n = 0;
+    std *head = NULL;
+    std *tmp = NULL;
+    std *tail = NULL;
+    while (1)
+    {
+        printf("학생 정보 관리 메뉴 \n");
+        printf("1, 학생 정보 추가 \n");
+        printf("2, 학생 정보 출력 \n");
+        printf("3. 종료\n");
+        scanf("%d", &n);
+        if (n == 1)
+
+            Student(&head, &tail);
+
+        else if (n == 2)
+
+            printStudent(head);
+
+        else if (n == 3)
+            return 0;
+    }
+}
