@@ -1,0 +1,17 @@
+#include <stdio.h>
+
+int main()
+{
+    int number;
+    int *tiger;
+    number = 100;
+    printf("--- number1 = %d ---\n", number);
+    tiger = &number;
+    *tiger = 200;
+    printf("--- number2 = %d ---\n", number);
+    printf("--- number의 주소 = %d ---\n", &number);
+    printf("--- tiger의 주소 = %d ---\n", &tiger);
+    printf("--- tiger의 저장된 값 = %d ---\n", tiger);
+    printf("--- tiger의 값 = %d ---\n", *tiger);
+    return 0;
+}
