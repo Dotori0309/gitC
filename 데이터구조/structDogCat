@@ -1,0 +1,58 @@
+#include <stdio.h>
+#define MAX 20
+
+struct record
+{
+    char name[20];
+    int kor;
+    int eng;
+    int math;
+    float avg;
+};
+
+int main(void)
+{
+    printf("---------------- 2021243053 정승민 ----------------\n");
+    int num = 0;
+    float average, allK = 0, allE = 0, allM = 0, allAverage = 0;
+    int kSum = 0, eSum = 0, mSum = 0;
+    struct record dog[MAX] =
+        {
+            {"kim", 10, 20, 30, 0},
+            {"park", 60, 75, 80, 0},
+            {"lee", 50, 74, 56, 0},
+            {"ha", 53, 63, 40, 0},
+            {"yoo", 44, 48, 38, 0},
+            {"rei", 36, 34, 48, 0},
+            {"man", 68, 58, 16, 0},
+            {"beb", 40, 74, 84, 0},
+            {"se", 98, 28, 80, 0},
+            {"choi", 34, 36, 32, 0},
+            {"jung", 56, 44, 12, 0},
+            {"kang", 26, 56, 54, 0},
+            {"han", 38, 24, 68, 0},
+            {"joo", 58, 12, 16, 0},
+            {"jeon", 64, 52, 28, 0},
+            {"hun", 26, 78, 74, 0},
+            {"chang", 34, 64, 12, 0},
+            {"jin", 56, 38, 64, 0},
+            {"rue", 78, 24, 12, 0},
+            {"chei", 88, 46, 68, 0}};
+
+    struct record *cat = dog;
+
+    for (num = 0; num < MAX; num++, cat++)
+    {
+        average = (cat->kor + cat->eng + cat->math) / 3.0;
+        kSum += cat->kor;
+        eSum += cat->eng;
+        mSum += cat->math;
+        printf("%s의 국어점수: %d, 영어점수: %d, 수학점수: %d, 평균: %.2f \n", cat->name, cat->kor, cat->eng, cat->math, average);
+    }
+    allK = (float)kSum / MAX;
+    allE = (float)eSum / MAX;
+    allM = (float)mSum / MAX;
+    allAverage = (allK + allE + allM) / 3;
+    printf("국어점수 평균: %.2f, 영어점수 평균: %.2f, 수학점수 평균: %.2f, 전체 평균: %.2f \n", allK, allE, allM, allAverage);
+    return 0;
+}
